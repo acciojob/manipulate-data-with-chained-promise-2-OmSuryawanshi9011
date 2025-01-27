@@ -5,17 +5,21 @@ function getNumbers() {
 		}, 3000)
 	});
 }
+
 getNumbers().then(numbers => {
 	return new Promise((resolve, reject) => {
-		const evenNumbers = numbers.filter(number => number % 2 === 0);
-		resolve(evenNumbers);
+		setTimeout(() => {
+			const evenNumbers = numbers.filter(number => number % 2 === 0);
+			document.getElementById('output').textContent = evenNumbers.join(', ');
+			resolve(evenNumbers);
+		}, 1000);
 	});
 }).then(evenNumbers => {
 	return new Promise((resolve, reject) => {
-		const doubledNumbers = evenNumbers.map(number => number * 2);
-		resolve(doubledNumbers);
+		setTimeout(() => {
+			const doubledNumbers = evenNumbers.map(number => number * 2);
+			document.getElementById('output').textContent = doubledNumbers.join(', ');
+			resolve(doubledNumbers);
+		}, 2000);
 	});
-}).then(doubledNumbers => {
-	const outputElement = document.getElementById('output');
-	outputElement.textContent = doubledNumbers.join(', ');
 });
